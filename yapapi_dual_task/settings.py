@@ -19,9 +19,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m!g%)pjf!##z(n(u2$6qpo^dk77ru41zp@^++bpi5khvy4oxa2'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -99,6 +96,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #### yapapi config
 
 try:
-    from .settings_local import YAGNA_APPKEY
+    from .settings_local import *
 except ImportError:
-    raise Exception("Please create a `seetings_local.py` with your YAGNA_APPKEY.")
+    raise Exception(
+        "Please create a `seetings_local.py` with your YAGNA_APPKEY and django's SECRET_KEY."
+    )

@@ -12,12 +12,29 @@ Ensure you have python>=3.8 and poetry, then:
 
 `poetry install`
 
-### Provide your `YAGNA_APPKEY`
+### Provide your `YAGNA_APPKEY` and django's `SECRET_KEY`
+
+#### Generate your yagna appkey
+
+`yagna app-key create requestor`
+
+or, if you already have one
+
+`yagna app-key list`
+
+and copy the value from the `key` column.
+
+#### Generate your django secret
+
+`python -c "import secrets; print(secrets.token_urlsafe())"`
+
+#### Add `settings_local.py`
 
 Inside `yapapi_dual_task`, beside the usual `settings.py`,
-create a `settings_local.py` with a single entry of:
+create a `settings_local.py` with:
 
 ```python
+SECRET_KEY = "your-django-secret"
 YAGNA_APPKEY = "your-yagna-appkey"
 ```
 
