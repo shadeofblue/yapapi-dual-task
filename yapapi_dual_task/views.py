@@ -28,8 +28,6 @@ async def run(request: HttpRequest):
     if post:
         form = BlenderForm(request.POST, request.FILES)
         if form.is_valid():
-            print("FORM VALID", form.cleaned_data)
-
             output_dir = settings.BLENDER_OUTPUT_DIR
             output_filename = "".join(random.choice(string.ascii_letters) for _ in range(10)) + ".png"
 

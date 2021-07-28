@@ -1,23 +1,26 @@
 import asyncio
 from contextlib import AsyncExitStack
 import signal
-from typing import Optional
+
+from .singleton import Singleton
 
 
-class AsyncSingleton:
-    _instance: Optional["AsyncSingleton"] = None
+class AsyncSingleton(Singleton):
+    __instantiated_class = None
     _started: bool = False
 
     def __new__(cls, *args, **kwargs):
-        if cls._instance:
-            return cls._instance
+        if AsyncSingleton.__instantiated_class and AsyncSingleton.__instantiated_class != cls:
+            raise Exception(f"Cannot have more than one AsyncSingleton class")
+        AsyncSingleton.__instantiated_class = cls
+
         return super().__new__(cls)
 
     def __init__(self, *args, **kwargs):
         if self._instance:
             return
 
-        type(self)._instance = self
+        super().__init__(*args, **kwargs)
         self._stack = AsyncExitStack()
 
     async def start(self):
