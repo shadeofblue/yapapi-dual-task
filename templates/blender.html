@@ -1,2 +1,10 @@
 <p>running on yapapi {{version}}, network: {{network}}, driver {{driver}}</p>
 
+{% if not post %}
+<form method="post" enctype="multipart/form-data">
+
+{{ form.as_p }}
+
+    <input type="submit">
+</form>
+{% endif %}

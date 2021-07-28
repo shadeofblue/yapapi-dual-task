@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
+    "django.contrib.staticfiles",
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'yapapi_dual_task.wsgi.application'
 
+BLENDER_OUTPUT_DIR = BASE_DIR / "static"
+STATICFILES_DIRS = [BLENDER_OUTPUT_DIR, ]
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -94,8 +97,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-#### yapapi config
+FILE_UPLOAD_HANDLERS = ['django.core.files.uploadhandler.TemporaryFileUploadHandler',]
 
 try:
     from .settings_local import *

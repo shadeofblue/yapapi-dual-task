@@ -46,3 +46,9 @@ YAGNA_APPKEY = "your-yagna-appkey"
 From project's root:
 
 `gunicorn yapapi_dual_task.asgi:application -k uvicorn.workers.UvicornWorker`
+
+## Accessing
+
+With your browser, navigate to http://127.0.0.1:8000/run
+
+All fields are mandatory -> for the scene file, you may use `cubes.blend` from yapapi's blender example

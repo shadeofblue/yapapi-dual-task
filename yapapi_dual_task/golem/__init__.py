@@ -46,3 +46,6 @@ class Golem(AsyncSingleton):
         await super().stop()
         print("------------------------------- GOLEM STOPPED")
 
+    @property
+    def golem(self):
+        return self._golem
