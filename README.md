@@ -2,6 +2,9 @@
 
 Just a test app to verify feasibility of launching golem tasks from a HTTP server (in this case, django)
 
+Assumes you know how to install Golem (yagna), et al blah blah blah... 
+if not, consult http://handbook.golem.network ... 
+
 ## Installation
 
 First, create and activate some virtual environment...
